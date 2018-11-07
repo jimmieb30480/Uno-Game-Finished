@@ -197,6 +197,10 @@ function playCard(cardColor, cardValue, playerId){
     let topCardValue = getValueOfCard(Game.topCard)
     let isCardPlayable = cardIsPlayable(color, val)
     
+    
+    changePlayerTurn()
+    showGameObject()
+    
     // if(color === topCardColor || val === topCardValue){
     //     player.cards.shift(0)
     //     topCard.setAttribute('src', 'images/'+cardName+'.png')
@@ -213,6 +217,98 @@ function playCard(cardColor, cardValue, playerId){
 }
 function cardIsPlayable(cardColor, cardValue, playerId){
     let Id = playerId
+    if(Id === "Game.players.A"){
+        let Id = Game.players.A
+        Id = Game.players.B
+        
+        let topCard = Game.topCard
+        let topCardColor = getColorOfCard(Game.topCard)
+        let topCardValue = getValueOfCard(Game.topCard)
+        // let cardName = cardName
+        
+        let color = getColorOfCard(cardColor)
+        let val = getValueOfCard(cardValue)
+        
+        if(color ===  topCardColor && val === 'draw_two'){
+            console.log('True')
+            alert('HA HA, draw two cards from the deck!')
+            playerDrawTwo(Id)
+        } else if(color != topCardColor && val === topCardValue && 'draw_two'){
+            console.log('True')
+            alert('HA HA, draw two cards from the deck!')
+            playerDrawTwo(Id)
+        }
+    }
+    
+    if(Id === "Game.players.B"){
+        let Id = Game.players.B
+        Id = Game.players.C
+        
+        let topCard = Game.topCard
+        let topCardColor = getColorOfCard(Game.topCard)
+        let topCardValue = getValueOfCard(Game.topCard)
+        // let cardName = cardName
+        
+        let color = getColorOfCard(cardColor)
+        let val = getValueOfCard(cardValue)
+        
+        if(color ===  topCardColor && val === 'draw_two'){
+            console.log('True')
+            alert('HA HA, draw two cards from the deck!')
+            playerDrawTwo(Id)
+        } else if(color != topCardColor && val === topCardValue && 'draw_two'){
+            console.log('True')
+            alert('HA HA, draw two cards from the deck!')
+            playerDrawTwo(Id)
+        }
+    }
+    
+    if(Id === "Game.players.C"){
+        let Id = Game.players.C
+        Id = Game.players.D
+        
+        let topCard = Game.topCard
+        let topCardColor = getColorOfCard(Game.topCard)
+        let topCardValue = getValueOfCard(Game.topCard)
+        // let cardName = cardName
+        
+        let color = getColorOfCard(cardColor)
+        let val = getValueOfCard(cardValue)
+        
+        if(color ===  topCardColor && val === 'draw_two'){
+            console.log('True')
+            alert('HA HA, draw two cards from the deck!')
+            playerDrawTwo(Id)
+        } else if(color != topCardColor && val === topCardValue && 'draw_two'){
+            console.log('True')
+            alert('HA HA, draw two cards from the deck!')
+            playerDrawTwo(Id)
+        }
+    }
+    
+    if(Id === "Game.players.D"){
+        let Id = Game.players.D
+        Id = Game.players.A
+        
+        let topCard = Game.topCard
+        let topCardColor = getColorOfCard(Game.topCard)
+        let topCardValue = getValueOfCard(Game.topCard)
+        // let cardName = cardName
+        
+        let color = getColorOfCard(cardColor)
+        let val = getValueOfCard(cardValue)
+        
+        if(color ===  topCardColor && val === 'draw_two'){
+            console.log('True')
+            alert('HA HA, draw two cards from the deck!')
+            playerDrawTwo(Id)
+        } else if(color != topCardColor && val === topCardValue && 'draw_two'){
+            console.log('True')
+            alert('HA HA, draw two cards from the deck!')
+            playerDrawTwo(Id)
+        }
+    }
+    
     let topCard = Game.topCard
     let topCardColor = getColorOfCard(Game.topCard)
     let topCardValue = getValueOfCard(Game.topCard)
@@ -221,25 +317,25 @@ function cardIsPlayable(cardColor, cardValue, playerId){
     let color = getColorOfCard(cardColor)
     let val = getValueOfCard(cardValue)
     
-    if(color ===  topCardColor && val === 'draw_two'){
-        console.log('True')
-        alert('HA HA, draw two cards from the deck!')
-        playerDrawTwo(Id)
-    } else if(color != topCardColor && val === topCardValue && 'draw_two'){
-        console.log('True')
-        alert('HA HA, draw two cards from the deck!')
-        playerDrawTwo(Id)
-    } else if(color !=  topCardColor && val === 'draw_four'){
-        // do nothing
-    } else if(color === topCardColor && val === 'draw_four'){
-        // do nothing
-    } else if(color != topCardColor && color === 'wild'){
-        // do nothing
-    } else if(color === topCardColor && color === 'wild'){
-        // do nothing
-    } else {
-        console.log('False')
-    }
+    // if(color ===  topCardColor && val === 'draw_two'){
+    //     console.log('True')
+    //     alert('HA HA, draw two cards from the deck!')
+    //     playerDrawTwo(Id)
+    // } else if(color != topCardColor && val === topCardValue && 'draw_two'){
+    //     console.log('True')
+    //     alert('HA HA, draw two cards from the deck!')
+    //     playerDrawTwo(Id)
+    // } else if(color !=  topCardColor && val === 'draw_four'){
+    //     // do nothing
+    // } else if(color === topCardColor && val === 'draw_four'){
+    //     // do nothing
+    // } else if(color != topCardColor && color === 'wild'){
+    //     // do nothing
+    // } else if(color === topCardColor && color === 'wild'){
+    //     // do nothing
+    // } else {
+    //     console.log('False')
+    // }
     
     if(color !=  topCardColor && val === 'draw_four'){
         console.log('True')
@@ -279,8 +375,16 @@ function playerDrawCard(playerId){
     //player can draw one card from the deck
     //that card will be pushed into the player's hand array
     
-    // let player = Game.players.i
-    // player.cards.push(Game.deck.shift())
+    let player = playerId
+    player.cards.push(Game.deck.shift(0))
+    
+    showGameObject()
+}
+function DrawCard(playerId){
+    let player = playerId
+    player.cards.push(Game.deck.shift(0))
+    
+    showGameObject()
 }
 function playerDrawTwo(playerId){
     //make an if/else statement to check if the top card of the deck is a plus 2 card
@@ -325,6 +429,9 @@ function playWildCard(playerId){
     //when the wild card is played, there should be a message asking the player which color they want to play by
     //there should be a multi-choice option to pick which color
     //if not, then the game will move on
+    if(Game.topCard === "wild" || "wild_draw_four"){
+        alert("Pick a color")
+    }
 }
 function skipTurn(){
     //make an if/else statement to check if the top card is a skip-turn card
